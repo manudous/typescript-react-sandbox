@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { getMiembroById } from "../miembro.api";
 import { Miembro, crearMiembroVacio } from "../modelo";
+import { Layout } from "./layout";
 
 export const MiembroDetalle: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,10 +15,12 @@ export const MiembroDetalle: React.FC = () => {
   }, []);
 
   return (
-    <div className="contenedor-detalle">
-      <h2>Detalle de miembro</h2>
-      <img src={miembro.avatar_url} alt={miembro.login} />
-      <p>{miembro.login}</p>
-    </div>
+    <Layout>
+      <div className="contenedor-detalle">
+        <h2>Detalle de miembro</h2>
+        <img src={miembro.avatar_url} alt={miembro.login} />
+        <p>{miembro.login}</p>
+      </div>
+    </Layout>
   );
 };
