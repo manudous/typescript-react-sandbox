@@ -19,3 +19,14 @@ body {
 .user-list-container > img {
   width: 80px;
 }
+
+.contenedor-detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor-detalle img {
+  width: 200px;
+  border-radius: 10px;
+}

@@ -1,5 +1,5 @@
-import { MiembroGrid } from "./componentes/miembro-grid";
+import { Rutas } from "./rutas";
 
 export const App = () => {
-  return <MiembroGrid />;
+  return <Rutas />;
 };
