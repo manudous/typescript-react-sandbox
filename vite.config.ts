@@ -12,4 +12,9 @@ const vitestConfig: VitestUserConfigInterface = {
 export default defineConfig({
   plugins: [checker({ typescript: true }), react()],
   test: vitestConfig.test,
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
+    },
+  },
 });
