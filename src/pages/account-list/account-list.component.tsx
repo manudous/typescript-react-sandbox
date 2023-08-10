@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, generatePath, useNavigate } from "react-router-dom";
 import { Lookup, createEmptyLookup } from "../../common/models";
-// import { useNavbarContext } from "../../common-app/components";
 import { appRoutes } from "../../core/router";
 import { AppLayout } from "../../layouts";
 import { mapAccountListApiToVm } from "./account-list.mappers";

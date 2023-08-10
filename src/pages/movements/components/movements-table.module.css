@@ -42,3 +42,7 @@
 .align-right {
   text-align: right;
 }
+
+.expense {
+  color: #c70202;
+}

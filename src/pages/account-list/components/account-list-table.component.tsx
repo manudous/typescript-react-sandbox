@@ -36,9 +36,7 @@ export const AccountListTable: React.FunctionComponent<Props> = (props) => {
                 {account.iban}
               </Link>
             </span>
-            <span className={`${classes.dataCell} ${classes.bold} `}>
-              {account.name}
-            </span>
+            <span className={classes.dataCell}>{account.name}</span>
             <span className={`${classes.dataCell} ${classes.alignRight} `}>
               {account.balance}
             </span>

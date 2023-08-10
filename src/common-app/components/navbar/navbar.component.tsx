@@ -1,33 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { appRoutes } from "../../../core/router";
-import { useNavbarContext } from "./navbar.context";
+import { isActiveRoute } from "./navbar.helpers";
 import classes from "./navbar.module.css";
 
 export const Navbar: React.FunctionComponent = () => {
-  const { updateSelectedOption, currentSelectedOption } = useNavbarContext();
+  const { pathname } = useLocation();
 
   return (
     <nav className={classes.navbar}>
       <ul className={classes.list}>
-        <li className={currentSelectedOption === "accounts" ? "selected" : ""}>
-          <Link
-            to={appRoutes.accountList}
-            onClick={() => updateSelectedOption("accounts")}
-          >
-            Mis Cuentas
-          </Link>
+        <li
+          className={isActiveRoute(pathname, "account") ? classes.selected : ""}
+        >
+          <Link to={appRoutes.accountList}>Mis Cuentas</Link>
         </li>
-        <li className={currentSelectedOption === "movements" ? "selected" : ""}>
+        <li
+          className={
+            isActiveRoute(pathname, "movements") ? classes.selected : ""
+          }
+        >
           Movimientos
         </li>
-        <li className={currentSelectedOption === "transfers" ? "selected" : ""}>
-          <Link
-            to={appRoutes.transfer}
-            onClick={() => updateSelectedOption("transfers")}
-          >
-            Transferencias
-          </Link>
+        <li
+          className={
+            isActiveRoute(pathname, "transfer") ? classes.selected : ""
+          }
+        >
+          <Link to={appRoutes.transfer}>Transferencias</Link>
         </li>
       </ul>
     </nav>

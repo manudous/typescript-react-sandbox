@@ -34,7 +34,7 @@ export const Login: React.FunctionComponent = () => {
         if (!isValidLogin) {
           alert("Usuario o contraseña incorrectos");
         } else {
-          setUserProfile({ userName: userLogin.user });
+          setUserProfile(userLogin.user);
           navigate(appRoutes.accountList);
         }
       } catch (error) {

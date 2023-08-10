@@ -1,15 +1,15 @@
 import React from "react";
-import { UserProfile, createEmptyUserProfile } from "./profile.vm";
 
-interface Context extends UserProfile {
-  setUserProfile: (userProfile: UserProfile) => void;
+interface Context {
+  userName: string;
+  setUserProfile: (userProfile: string) => void;
 }
 
 const noUserLogin = "no user login";
 
 const ProfileContext = React.createContext<Context>({
   userName: noUserLogin,
-  setUserProfile: () => {}
+  setUserProfile: () => {},
 });
 
 interface Props {
@@ -17,14 +17,12 @@ interface Props {
 }
 
 export const ProfileProvider: React.FC<Props> = ({ children }) => {
-  const [userProfile, setUserProfile] = React.useState<UserProfile>(
-    createEmptyUserProfile()
-  );
+  const [userProfile, setUserProfile] = React.useState<string>("");
 
   return (
     <ProfileContext.Provider
       value={{
-        userName: userProfile.userName,
+        userName: userProfile,
         setUserProfile,
       }}
     >

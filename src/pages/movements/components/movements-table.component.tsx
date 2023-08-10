@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./movements-table.module.css";
+import { isExpense } from "../movements.helpers";
 import { Movement } from "../movements.vm";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 
 export const MovementsTable: React.FunctionComponent<Props> = (props) => {
   const { movements } = props;
+
   return (
     <div className={classes.gridContainer}>
       <div className={classes.gridTable}>
@@ -20,12 +22,20 @@ export const MovementsTable: React.FunctionComponent<Props> = (props) => {
         </div>
 
         {movements.map((movement) => (
-          <div className={classes.gridTableRow}>
+          <div className={classes.gridTableRow} key={movement.id}>
             <span className={classes.dataCell}>{movement.transaction}</span>
             <span className={classes.dataCell}>{movement.realTransaction}</span>
             <span className={classes.dataCell}>{movement.description}</span>
-            <span className={classes.dataCell}>{movement.amount}</span>
-            <span className={classes.dataCell}>{movement.balance}</span>
+            <span
+              className={`${classes.dataCell} ${classes.alignRight} ${
+                isExpense(movement.amount) ? classes.expense : ""
+              }`}
+            >
+              {movement.amount}
+            </span>
+            <span className={`${classes.dataCell} ${classes.alignRight}`}>
+              {movement.balance}
+            </span>
           </div>
         ))}
       </div>
