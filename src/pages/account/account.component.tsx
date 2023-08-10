@@ -21,6 +21,7 @@ export const Account: React.FunctionComponent = () => {
   const [account, setAccount] = React.useState<vm.Account>(
     vm.createEmptyAccount()
   );
+  
   const [selectedOption, setSelectedOption] = React.useState<Lookup>(
     createEmptyLookup()
   );
@@ -85,24 +86,11 @@ export const Account: React.FunctionComponent = () => {
           <div className={classes.formContainer}>
             <label>Tipo de cuenta:</label>
             <div>
-              {/* <select
-                id="type"
-                className={classes.select}
-                value={account.type}
-                onChange={(e) =>
-                  setAccount({ ...account, type: e.target.value })
-                }
-              >
-                <option value=""></option>
-                <option value="1">Nómina</option>
-                <option value="2">Ahorro</option>
-                <option value="3">Normal</option>
-              </select> */}
               <Select
                 value={selectedOption}
                 onChange={setSelectedOption}
                 optionList={selectOptions}
-                defaultValue=""
+                defaultValue="Seleccionar"
                 className={classes.select}
               />
               {errors.type && <p className={classes.error}>{errors.type}</p>}

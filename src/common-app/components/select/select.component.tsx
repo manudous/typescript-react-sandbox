@@ -6,7 +6,7 @@ interface Props {
   value: Lookup;
   onChange: (value: Lookup) => void;
   optionList: Lookup[];
-  defaultValue: string;
+  defaultValue?: string;
   className?: string;
 }
 
@@ -17,7 +17,8 @@ export const Select: React.FunctionComponent<Props> = (props) => {
       className={`${classes.select} ${className}`}
       onChange={(e) =>
         onChange({
-          id: value.id,
+          // id: value.id,
+          id: e.target.value,
           name: e.target.value,
         })
       }

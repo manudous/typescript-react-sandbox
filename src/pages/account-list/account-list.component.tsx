@@ -12,7 +12,6 @@ import classes from "./account-list.module.css";
 
 export const AccountList: React.FunctionComponent = () => {
   const navigate = useNavigate();
-  // const { updateSelectedOption } = useNavbarContext();
   const [accounts, setAccounts] = React.useState<vm.Account[]>([]);
   const [selectedOption, setSelectedOption] = React.useState<Lookup>(
     createEmptyLookup()
@@ -35,14 +34,12 @@ export const AccountList: React.FunctionComponent = () => {
           id: selectedOption.id,
         })
       );
-      // updateSelectedOption("transfers");
     } else if (selectedOption.name === optionTypes.movements) {
       navigate(
         generatePath(appRoutes.movements, {
           id: selectedOption.id,
         })
       );
-      // updateSelectedOption("movements");
     }
   };
 

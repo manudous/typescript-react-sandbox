@@ -58,7 +58,7 @@ export const Movements: React.FunctionComponent = () => {
           </div>
           <div className={classes.containerRow}>
             <h3 className="subtitulo_paginas">
-              Alias: <span id="alias">{account.name}</span>
+              Alias: <span>{account.name}</span>
             </h3>
             <span className="iban">IBAN: {account.iban}</span>
           </div>
