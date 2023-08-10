@@ -62,49 +62,47 @@ export const Account: React.FunctionComponent = () => {
 
   return (
     <AppLayout>
-      <section>
-        <div className={classes.container}>
-          <div>
-            <h1 className={classes.title}>Cuenta Bancaria</h1>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className={classes.formContainer}>
-              <label>Tipo de cuenta:</label>
-              <div>
-                <select
-                  id="type"
-                  className={classes.select}
-                  value={account.type}
-                  onChange={(e) =>
-                    setAccount({ ...account, type: e.target.value })
-                  }
-                >
-                  <option value=""></option>
-                  <option value="1">Nómina</option>
-                  <option value="2">Ahorro</option>
-                  <option value="3">Normal</option>
-                </select>
-                {errors.type && <p className={classes.error}>{errors.type}</p>}
-              </div>
-              <label htmlFor="alias">Alias:</label>
-              <div>
-                <input
-                  id="alias"
-                  className={classes.input}
-                  autoComplete="off"
-                  value={account.name}
-                  onChange={(e) =>
-                    setAccount({ ...account, name: e.target.value })
-                  }
-                />
-                {errors.name && <p className={classes.error}>{errors.name}</p>}
-              </div>
-              <button type="submit" className={classes.button}>
-                GUARDAR
-              </button>
-            </div>
-          </form>
+      <section className={classes.container}>
+        <div>
+          <h1 className={classes.title}>Cuenta Bancaria</h1>
         </div>
+        <form onSubmit={handleSubmit}>
+          <div className={classes.formContainer}>
+            <label>Tipo de cuenta:</label>
+            <div>
+              <select
+                id="type"
+                className={classes.select}
+                value={account.type}
+                onChange={(e) =>
+                  setAccount({ ...account, type: e.target.value })
+                }
+              >
+                <option value=""></option>
+                <option value="1">Nómina</option>
+                <option value="2">Ahorro</option>
+                <option value="3">Normal</option>
+              </select>
+              {errors.type && <p className={classes.error}>{errors.type}</p>}
+            </div>
+            <label htmlFor="alias">Alias:</label>
+            <div>
+              <input
+                id="alias"
+                className={classes.input}
+                autoComplete="off"
+                value={account.name}
+                onChange={(e) =>
+                  setAccount({ ...account, name: e.target.value })
+                }
+              />
+              {errors.name && <p className={classes.error}>{errors.name}</p>}
+            </div>
+            <button type="submit" className={classes.button}>
+              GUARDAR
+            </button>
+          </div>
+        </form>
       </section>
     </AppLayout>
   );

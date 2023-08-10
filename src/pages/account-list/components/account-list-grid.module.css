@@ -1,15 +1,16 @@
-.grid-table {
-  /* max-width: 100%; */
-  border: 3px solid red;
-  min-width: 700px;
+.grid-container {
+  max-width: 100%;
   overflow-x: auto;
+}
+
+.grid-table {
+  min-width: 800px;
 }
 
 .grid-table__row {
   display: grid;
   grid-template-columns: 30% 12% repeat(2, 17%) 1fr;
   gap: 1px;
-  /* max-width: 100%; */
 }
 
 .grid-table__row:nth-child(odd) {

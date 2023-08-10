@@ -1,6 +1,11 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 10px;
+}
+
+.container > div {
+  margin-bottom: 20px;
 }
 
 .form_container {
@@ -8,7 +13,6 @@
   grid-template-columns: 25% 1fr;
   gap: 10px;
   align-items: baseline;
-  padding: 10px;
   max-width: 100%;
 }
 
@@ -109,7 +113,7 @@
     max-width: 100%;
     min-width: 0;
   }
-  
+
   .select {
     width: 100%;
   }

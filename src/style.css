@@ -132,7 +132,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body > :first-child {
@@ -140,7 +140,7 @@ body > :first-child {
   flex-direction: column;
   flex-grow: 1;
   max-width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 h1 {
