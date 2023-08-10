@@ -5,14 +5,14 @@ import { Link, generatePath } from "react-router-dom";
 import { appRoutes } from "../../../core/router";
 import { Lookup } from "../../../common/models";
 import { selectOptions } from "../account-list.constants";
-import classes from "./account-list-grid.module.css";
+import classes from "./account-list-table.module.css";
 
 interface Props {
   accounts: Account[];
   setSelectedOption: (value: Lookup) => void;
 }
 
-export const AccountListGrid: React.FunctionComponent<Props> = (props) => {
+export const AccountListTable: React.FunctionComponent<Props> = (props) => {
   const { accounts, setSelectedOption } = props;
   return (
     <div className={classes.gridContainer}>

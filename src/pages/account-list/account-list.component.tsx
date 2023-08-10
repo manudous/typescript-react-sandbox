@@ -8,7 +8,7 @@ import { mapAccountListApiToVm } from "./account-list.mappers";
 import * as api from "./api";
 import * as vm from "./account-list.vm";
 import { optionTypes } from "./account-list.constants";
-import { AccountListGrid } from "./components";
+import { AccountListTable } from "./components";
 import classes from "./account-list.module.css";
 
 export const AccountList: React.FunctionComponent = () => {
@@ -66,7 +66,7 @@ export const AccountList: React.FunctionComponent = () => {
             </Link>
           </div>
         </div>
-        <AccountListGrid
+        <AccountListTable
           accounts={accounts}
           setSelectedOption={setSelectedOption}
         />

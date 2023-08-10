@@ -1,9 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { AppLayout } from "../../layouts";
+import { MovementsTable } from "./components";
 import { mapMovementListApiToVm, mapAccountApiToVm } from "./movements.mappers";
 import * as api from "./api";
 import * as vm from "./movements.vm";
+import classes from "./movements.module.css";
 
 export const Movements: React.FunctionComponent = () => {
   const { id } = useParams();
@@ -45,62 +47,22 @@ export const Movements: React.FunctionComponent = () => {
 
   return (
     <AppLayout>
-      <section>
-        <div className="container">
-          <div>
-            <h1 className="titulo_paginas">
-              Saldos y Últimos movimientos
-              <div className="resumen_destacado">
-                <div className="saldo_disponible align-right">
-                  <p className="label">SALDO DISPONIBLE</p>
-                  <p id="balance" className="importe">
-                    {account.balance}
-                  </p>
-                </div>
-              </div>
-            </h1>
+      <section className={classes.container}>
+        <div className={classes.containerMovements}>
+          <div className={`${classes.containerRow} ${classes.borderBottom}`}>
+            <h1>Saldos y Últimos movimientos</h1>
+            <div>
+              <p className={classes.balanceLabel}>SALDO DISPONIBLE</p>
+              <p className={classes.balance}>{account.balance}</p>
+            </div>
+          </div>
+          <div className={classes.containerRow}>
             <h3 className="subtitulo_paginas">
               Alias: <span id="alias">{account.name}</span>
-              <span className="iban">
-                IBAN: <span id="iban">{account.iban}</span>
-              </span>
             </h3>
+            <span className="iban">IBAN: {account.iban}</span>
           </div>
-          <table
-            cellSpacing="1"
-            cellPadding="0"
-            align="center"
-            className="full"
-          >
-            <thead>
-              <tr>
-                <td>FECHA</td>
-                <td>FECHA VALOR</td>
-                <td>DESCRIPCIÓN</td>
-                <td>IMPORTE</td>
-                <td>SALDO DISPONIBLE</td>
-              </tr>
-            </thead>
-            <tbody id="movement-list">
-              {movements.map((movement) => (
-                <tr key={movement.id}>
-                  <td>{movement.transaction}</td>
-                  <td>{movement.realTransaction}</td>
-                  <td>{movement.description}</td>
-                  <td
-                    className={
-                      parseInt(movement.amount) < 0
-                        ? "gasto align-right"
-                        : "align-right"
-                    }
-                  >
-                    {movement.amount}
-                  </td>
-                  <td className="align-right">{movement.balance}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <MovementsTable movements={movements} />
         </div>
       </section>
     </AppLayout>
