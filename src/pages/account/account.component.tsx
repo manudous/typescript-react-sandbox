@@ -10,6 +10,9 @@ import {
 import * as api from "./api";
 import * as vm from "./account.vm";
 import classes from "./account.module.css";
+import { Select } from "../../common-app/components";
+import { selectOptions } from "./account.constants";
+import { Lookup, createEmptyLookup } from "../../common/models";
 
 export const Account: React.FunctionComponent = () => {
   const navigate = useNavigate();
@@ -17,6 +20,9 @@ export const Account: React.FunctionComponent = () => {
 
   const [account, setAccount] = React.useState<vm.Account>(
     vm.createEmptyAccount()
+  );
+  const [selectedOption, setSelectedOption] = React.useState<Lookup>(
+    createEmptyLookup()
   );
 
   const [errors, setErrors] = React.useState<vm.AccountErrors>(
@@ -60,6 +66,15 @@ export const Account: React.FunctionComponent = () => {
     }
   }, []);
 
+  React.useEffect(() => {
+    if (account) {
+      setSelectedOption({
+        id: account.type,
+        name: account.name,
+      });
+    }
+  }, [account]);
+
   return (
     <AppLayout>
       <section className={classes.container}>
@@ -70,7 +85,7 @@ export const Account: React.FunctionComponent = () => {
           <div className={classes.formContainer}>
             <label>Tipo de cuenta:</label>
             <div>
-              <select
+              {/* <select
                 id="type"
                 className={classes.select}
                 value={account.type}
@@ -82,7 +97,14 @@ export const Account: React.FunctionComponent = () => {
                 <option value="1">Nómina</option>
                 <option value="2">Ahorro</option>
                 <option value="3">Normal</option>
-              </select>
+              </select> */}
+              <Select
+                value={selectedOption}
+                onChange={setSelectedOption}
+                optionList={selectOptions}
+                defaultValue=""
+                className={classes.select}
+              />
               {errors.type && <p className={classes.error}>{errors.type}</p>}
             </div>
             <label htmlFor="alias">Alias:</label>

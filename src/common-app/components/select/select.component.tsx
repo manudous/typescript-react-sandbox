@@ -3,7 +3,7 @@ import { Lookup } from "../../../common/models";
 import classes from "./select.module.css";
 
 interface Props {
-  value: string;
+  value: Lookup;
   onChange: (value: Lookup) => void;
   optionList: Lookup[];
   defaultValue: string;
@@ -17,10 +17,11 @@ export const Select: React.FunctionComponent<Props> = (props) => {
       className={`${classes.select} ${className}`}
       onChange={(e) =>
         onChange({
-          id: value,
+          id: value.id,
           name: e.target.value,
         })
       }
+      value={value.id}
     >
       <option value="">{defaultValue}</option>
       {optionList.map((option) => (

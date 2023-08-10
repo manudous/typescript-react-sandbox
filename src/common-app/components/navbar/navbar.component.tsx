@@ -19,12 +19,7 @@ export const Navbar: React.FunctionComponent = () => {
           </Link>
         </li>
         <li className={currentSelectedOption === "movements" ? "selected" : ""}>
-          <Link
-            to={appRoutes.movements}
-            onClick={() => updateSelectedOption("movements")}
-          >
-            Movimientos
-          </Link>
+          Movimientos
         </li>
         <li className={currentSelectedOption === "transfers" ? "selected" : ""}>
           <Link

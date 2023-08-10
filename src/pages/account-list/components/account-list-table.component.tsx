@@ -47,7 +47,7 @@ export const AccountListTable: React.FunctionComponent<Props> = (props) => {
             </span>
             <span className={`${classes.select} `}>
               <Select
-                value={account.id}
+                value={account}
                 onChange={setSelectedOption}
                 optionList={selectOptions}
                 defaultValue="Seleccionar"
