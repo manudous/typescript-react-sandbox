@@ -1,13 +1,10 @@
 .error {
   color: #f44336;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
+  font-size: 0.9em;
 }
 
-header {
+.header {
   height: 15vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -15,7 +12,7 @@ header {
   background: #ffffff;
 }
 
-.login_logo {
+.logo {
   width: 200px;
 }
 
@@ -28,21 +25,24 @@ header {
   margin: 0 auto;
 }
 
-.login_box {
+.box {
   position: absolute;
-  width: 50vw;
-  min-width: 350px;
-  max-width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: #ffffff;
+  min-width: 400px;
+  padding: 40px 15px;
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 1em;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-sizing: border-box;
 }
 
-.login_box h1 {
+.box h1 {
   border-left: 10px solid #22c6cb;
   padding-left: 10px;
   font-size: 2.2rem;
@@ -53,23 +53,29 @@ header {
   border-color: #f44336;
 }
 
-input {
+.input {
   display: block;
   border-radius: 10px;
   border: 1px solid #e5e5e5;
   padding: 0.8em 1em;
-  width: 100%;
   margin-bottom: 10px;
-  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3) inset;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3) inset;
   border: 1px solid #ddd;
+  width: 100%;
 }
 
-h4 {
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input-footer {
   font-weight: 300;
 }
 
-h4:before {
+.input-footer:before {
   content: "";
   background: url(assets/secure_site.svg) no-repeat center center;
   width: 40px;
@@ -86,16 +92,18 @@ strong {
 }
 
 .btn_enviar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #22c6cb;
   border: none;
   padding: 0.8em 1.5em;
   border-radius: 10px;
   color: #ffffff;
-  -webkit-transition: all ease 0.2s;
-  transition: all ease 0.2s;
   cursor: pointer;
-  text-decoration: none;
   font-weight: 900;
+  width: 25%;
+  transition: all ease 0.2s;
 }
 
 .btn_enviar:hover {
@@ -110,7 +118,7 @@ strong {
 }
 
 @media (max-width: 1900px) and (orientation: portrait) {
-  .login_box {
+  .box {
     width: 100%;
     max-width: 100%;
     border-radius: 0;

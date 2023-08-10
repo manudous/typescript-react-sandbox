@@ -1,0 +1,41 @@
+.navbar {
+  background: #232c3b;
+  margin-bottom: 25px;
+}
+
+.list { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  padding: 10px;
+  gap: 40px;
+}
+
+.selected {
+  border-bottom: 5px solid #22c6cb;
+  padding-bottom: 5px;
+  margin-bottom: -10px;
+}
+
+.list a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  .list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .list > li {
+    margin: 5px 0;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+  }
+}
+  
+
+

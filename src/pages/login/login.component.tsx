@@ -45,39 +45,53 @@ export const Login: React.FunctionComponent = () => {
 
   return (
     <>
-      <header>
-        <img className={classes.loginLogo} src="assets/logo_header.svg" />
+      <header className={classes.header}>
+        <img className={classes.logo} src="assets/logo_header.svg" />
       </header>
       <div className={classes.bgImg}></div>
-      <div className={classes.loginBox}>
+      <div className={classes.box}>
         <h1>Acceso</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            name="user"
-            placeholder="Usuario"
-            autoComplete="off"
-            className={errors.user ? classes.inputError : ""}
-            onChange={(e) =>
-              setUserLogin({ ...userLogin, user: e.target.value })
-            }
-          />
-          {errors.user && <p className={classes.error}>{errors.user}</p>}
-          <input
-            name="password"
-            type="password"
-            placeholder="Contraseña"
-            autoComplete="off"
-            className={errors.user ? classes.inputError : ""}
-            onChange={(e) =>
-              setUserLogin({ ...userLogin, password: e.target.value })
-            }
-          />
-          {errors.password && <p className={classes.error}>{errors.password}</p>}
+        <form onSubmit={handleSubmit} className={classes.form}>
+          <div>
+            <input
+              name="user"
+              placeholder="Usuario"
+              autoComplete="off"
+              className={
+                errors.user
+                  ? `${classes.inputError} ${classes.input}`
+                  : classes.input
+              }
+              onChange={(e) =>
+                setUserLogin({ ...userLogin, user: e.target.value })
+              }
+            />
+            {errors.user && <p className={classes.error}>{errors.user}</p>}
+          </div>
+          <div>
+            <input
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              autoComplete="off"
+              className={
+                errors.user
+                  ? `${classes.input} ${classes.inputError}`
+                  : classes.input
+              }
+              onChange={(e) =>
+                setUserLogin({ ...userLogin, password: e.target.value })
+              }
+            />
+            {errors.password && (
+              <p className={classes.error}>{errors.password}</p>
+            )}
+          </div>
           <button type="submit" className={classes.btnEnviar}>
             ENVIAR
           </button>
         </form>
-        <h4>
+        <h4 className={classes.inputFooter}>
           Está Usted en un <strong>sitio seguro</strong>
         </h4>
       </div>
