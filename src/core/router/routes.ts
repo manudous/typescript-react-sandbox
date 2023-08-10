@@ -6,6 +6,7 @@ interface AppRoutes {
   editAccount: string;
   movements: string;
   transfer: string;
+  trasnferWithId: string;
 }
 
 export const appRoutes: AppRoutes = {
@@ -15,5 +16,6 @@ export const appRoutes: AppRoutes = {
   createAccount: "/create-account",
   editAccount: "/edit-account/:id",
   movements: "/movements/:id",
-  transfer: "/transfer/:id",
+  transfer: "/transfer",
+  trasnferWithId: "/transfer/:id",
 };

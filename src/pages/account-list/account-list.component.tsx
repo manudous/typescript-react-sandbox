@@ -32,7 +32,7 @@ export const AccountList: React.FunctionComponent = () => {
   const handleSelectedOptionChange = (selectedOption: Lookup): void => {
     if (selectedOption.name === optionTypes.transfers) {
       navigate(
-        generatePath(appRoutes.transfer, {
+        generatePath(appRoutes.trasnferWithId, {
           id: selectedOption.id,
         })
       );

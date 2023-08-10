@@ -17,6 +17,8 @@ export const RouterComponent: React.FC = () => {
         <Route path={appRoutes.editAccount} element={<Account />} />
         <Route path={appRoutes.movements} element={<Movements />} />
         <Route path={appRoutes.transfer} element={<Transfer />} />
+        <Route path={appRoutes.trasnferWithId} element={<Transfer />} />
+
         <Route path="/*" element={<Navigate to="./login" replace />} />
       </Routes>
     </BrowserRouter>
