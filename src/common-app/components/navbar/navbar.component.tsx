@@ -15,13 +15,9 @@ export const Navbar: React.FunctionComponent = () => {
         >
           <Link to={appRoutes.accountList}>Mis Cuentas</Link>
         </li>
-        <li
-          className={
-            isActiveRoute(pathname, "movements") ? classes.selected : ""
-          }
-        >
-          Movimientos
-        </li>
+        {isActiveRoute(pathname, "movements") && (
+          <li className={classes.selected}>Movimientos</li>
+        )}
         <li
           className={
             isActiveRoute(pathname, "transfer") ? classes.selected : ""

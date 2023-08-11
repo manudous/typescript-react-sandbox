@@ -2,17 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfileContext } from "@/core/profile";
 import { appRoutes } from "@/core/router";
+import * as api from "./api";
+import { LoginForm } from "./components";
 import { mapCredentialFromVmToApi } from "./login.mappers";
 import { validateForm } from "./login.validation";
-import * as api from "./api";
 import * as vm from "./login.vm";
 import classes from "./login.module.css";
 
 export const Login: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const { setUserProfile } = useProfileContext();
-  
-  const [userLogin, setUserLogin] = React.useState<vm.Credential>(
+
+  const [userCredential, setUserCredential] = React.useState<vm.Credential>(
     vm.createEmptyCredential()
   );
 
@@ -20,26 +21,34 @@ export const Login: React.FunctionComponent = () => {
     vm.createEmptyCredential()
   );
 
+  const handleLogin = async (credential: vm.Credential): Promise<boolean> => {
+    try {
+      const userLoginModel = mapCredentialFromVmToApi(credential);
+      const isValidLogin = await api.isValidLogin(userLoginModel);
+      return isValidLogin;
+    } catch (error) {
+      throw new Error("Error en el login");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formErrors = validateForm(userLogin);
+
+    const formErrors = validateForm(userCredential);
     setErrors(formErrors);
+
     const isValidForm = Object.values(formErrors).every(
       (error) => error === ""
     );
 
     if (isValidForm) {
-      try {
-        const userLoginModel = mapCredentialFromVmToApi(userLogin);
-        const isValidLogin = await api.isValidLogin(userLoginModel);
-        if (!isValidLogin) {
-          alert("Usuario o contraseña incorrectos");
-        } else {
-          setUserProfile(userLogin.user);
-          navigate(appRoutes.accountList);
-        }
-      } catch (error) {
-        throw new Error("Error en el login");
+      const isValidLogin = await handleLogin(userCredential);
+
+      if (!isValidLogin) {
+        alert("Usuario o contraseña incorrectos");
+      } else {
+        setUserProfile(userCredential.user);
+        navigate(appRoutes.accountList);
       }
     }
   };
@@ -52,46 +61,12 @@ export const Login: React.FunctionComponent = () => {
       <div className={classes.bgImg}></div>
       <div className={classes.box}>
         <h1>Acceso</h1>
-        <form onSubmit={handleSubmit} className={classes.form}>
-          <div>
-            <input
-              name="user"
-              placeholder="Usuario"
-              autoComplete="off"
-              className={
-                errors.user
-                  ? `${classes.inputError} ${classes.input}`
-                  : classes.input
-              }
-              onChange={(e) =>
-                setUserLogin({ ...userLogin, user: e.target.value })
-              }
-            />
-            {errors.user && <p className={classes.error}>{errors.user}</p>}
-          </div>
-          <div>
-            <input
-              name="password"
-              type="password"
-              placeholder="Contraseña"
-              autoComplete="off"
-              className={
-                errors.user
-                  ? `${classes.input} ${classes.inputError}`
-                  : classes.input
-              }
-              onChange={(e) =>
-                setUserLogin({ ...userLogin, password: e.target.value })
-              }
-            />
-            {errors.password && (
-              <p className={classes.error}>{errors.password}</p>
-            )}
-          </div>
-          <button type="submit" className={classes.btnEnviar}>
-            ENVIAR
-          </button>
-        </form>
+        <LoginForm
+          userCredential={userCredential}
+          errors={errors}
+          setUserCredential={setUserCredential}
+          onSubmit={handleSubmit}
+        />
         <h4 className={classes.inputFooter}>
           Está Usted en un <strong>sitio seguro</strong>
         </h4>
