@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Lookup, createEmptyLookup } from "@/common/models";
 import { appRoutes } from "@/core/router/routes";
 import { AppLayout } from "@/layouts";
+import * as api from "./api";
+import { AccountForm } from "./components";
 import { validateForm } from "./account.validation";
 import {
   mapAccountFromApiToVm,
   mapAccountFromVmToApi,
 } from "./account.mappers";
-import * as api from "./api";
 import * as vm from "./account.vm";
 import classes from "./account.module.css";
 
@@ -18,10 +18,6 @@ export const Account: React.FunctionComponent = () => {
 
   const [account, setAccount] = React.useState<vm.Account>(
     vm.createEmptyAccount()
-  );
-
-  const [selectedOption, setSelectedOption] = React.useState<Lookup>(
-    createEmptyLookup()
   );
 
   const [errors, setErrors] = React.useState<vm.AccountErrors>(
@@ -42,8 +38,10 @@ export const Account: React.FunctionComponent = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formErrors = validateForm(account);
     setErrors(formErrors);
+
     const isValidForm = Object.values(formErrors).every(
       (error) => error === ""
     );
@@ -65,57 +63,18 @@ export const Account: React.FunctionComponent = () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    if (selectedOption.id) {
-      setSelectedOption({
-        id: account.type,
-        name: account.name,
-      });
-    }
-  }, [selectedOption]);
-
   return (
     <AppLayout>
       <section className={classes.container}>
         <div>
           <h1 className={classes.title}>Cuenta Bancaria</h1>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className={classes.formContainer}>
-            <label>Tipo de cuenta:</label>
-            <div>
-              <select
-                className={classes.select}
-                onChange={(e) => {
-                  setAccount({ ...account, type: e.target.value });
-                }}
-                value={account.type}
-              >
-                <option value="">Seleccionar</option>
-                <option value="0">Cuenta Corriente</option>
-                <option value="1">Cuenta Ahorro</option>
-                <option value="2">Cuenta Nomina</option>
-              </select>
-              {errors.type && <p className={classes.error}>{errors.type}</p>}
-            </div>
-            <label htmlFor="alias">Alias:</label>
-            <div>
-              <input
-                id="alias"
-                className={classes.input}
-                autoComplete="off"
-                value={account.name}
-                onChange={(e) =>
-                  setAccount({ ...account, name: e.target.value })
-                }
-              />
-              {errors.name && <p className={classes.error}>{errors.name}</p>}
-            </div>
-            <button type="submit" className={classes.button}>
-              GUARDAR
-            </button>
-          </div>
-        </form>
+        <AccountForm
+          account={account}
+          errors={errors}
+          setAccount={setAccount}
+          onSubmit={handleSubmit}
+        />
       </section>
     </AppLayout>
   );

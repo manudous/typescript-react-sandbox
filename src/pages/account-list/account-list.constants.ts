@@ -1,13 +1,19 @@
 import { Lookup } from "@/common/models";
 
-export const actionLabels: { [name: string]: string } = {
+interface Labels {
+  selectName: string;
+  transferName: string;
+  movementsName: string;
+}
+
+export const labels: Labels = {
   selectName: "Seleccionar",
   transferName: "Transferir",
   movementsName: "Movimientos",
 };
 
 export const selectOptions: Lookup[] = [
-  { id: "", name: actionLabels.selectName },
-  { id: "1", name: actionLabels.transferName },
-  { id: "2", name: actionLabels.movementsName },
+  { id: "", name: labels.selectName },
+  { id: "1", name: labels.transferName },
+  { id: "2", name: labels.movementsName },
 ];
