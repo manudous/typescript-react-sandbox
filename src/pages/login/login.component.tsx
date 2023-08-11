@@ -27,7 +27,7 @@ export const Login: React.FunctionComponent = () => {
       const isValidLogin = await api.isValidLogin(userLoginModel);
       return isValidLogin;
     } catch (error) {
-      throw new Error("Error en el login");
+      throw new Error("Error in login");
     }
   };
 

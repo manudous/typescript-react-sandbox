@@ -27,12 +27,12 @@ export const Account: React.FunctionComponent = () => {
   const loadAccount = async () => {
     try {
       if (!id) {
-        throw new Error("No hay id");
+        throw new Error("No ID");
       }
       const apiAccount = await api.getAccount(id);
       setAccount(mapAccountFromApiToVm({ ...apiAccount, id }));
     } catch (error) {
-      throw new Error("Error al cargar la cuenta");
+      throw new Error("Error loading the account");
     }
   };
 
@@ -52,7 +52,7 @@ export const Account: React.FunctionComponent = () => {
         await api.saveAccount(accountModel);
         navigate(appRoutes.accountList);
       } catch (error) {
-        throw new Error("Error al guardar la cuenta");
+        throw new Error("Error saving the account");
       }
     }
   };

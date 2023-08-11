@@ -9,39 +9,33 @@ import classes from "./movements.module.css";
 
 export const Movements: React.FunctionComponent = () => {
   const { id } = useParams();
+
   const [movements, setMovements] = React.useState<vm.Movement[]>([]);
   const [account, setAccount] = React.useState<vm.Account>(
     vm.createEmptyAccount()
   );
 
-  const loadMovements = async () => {
+  const loadInitialData = async () => {
     try {
       if (!id) {
-        throw new Error("No hay id");
+        throw new Error("No ID");
       }
-      const apiMovements = await api.getMovements(id);
-      setMovements(mapMovementListApiToVm(apiMovements));
-    } catch (error) {
-      throw new Error("Error al cargar los movimientos");
-    }
-  };
 
-  const loadAccount = async () => {
-    try {
-      if (!id) {
-        throw new Error("No hay id");
-      }
-      const apiAccount = await api.getAccount(id);
+      const [apiMovements, apiAccount] = await Promise.all([
+        api.getMovements(id),
+        api.getAccount(id),
+      ]);
+
+      setMovements(mapMovementListApiToVm(apiMovements));
       setAccount(mapAccountApiToVm(apiAccount));
     } catch (error) {
-      throw new Error("Error al cargar la cuenta");
+      throw new Error("Error loading the movements or account");
     }
   };
 
   React.useEffect(() => {
     if (id) {
-      loadMovements();
-      loadAccount();
+      loadInitialData();
     }
   }, []);
 
