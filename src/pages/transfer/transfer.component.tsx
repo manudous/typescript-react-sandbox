@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AppLayout } from "../../layouts";
-import { Lookup } from "../../common/models";
-import { appRoutes } from "../../core/router";
+import { appRoutes } from "@/core/router";
+import { Lookup } from "@/common/models";
+import { AppLayout } from "@/layouts";
 import {
   mapAccountListFromApiToVm,
   mapTransferFromVmToApi,

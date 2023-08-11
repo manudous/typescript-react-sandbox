@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { appRoutes } from "../../../core/router";
+import { appRoutes } from "@/core/router";
 import { isActiveRoute } from "./navbar.helpers";
 import classes from "./navbar.module.css";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, Header, Navbar } from "../common-app/components";
+import { Footer, Header, Navbar } from "@/common-app/components";
 import classes from "./app.module.css";
 
 interface Props {

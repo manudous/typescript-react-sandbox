@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { appRoutes } from "../../core/router";
-import { useProfileContext } from "../../core/profile";
+import { useProfileContext } from "@/core/profile";
+import { appRoutes } from "@/core/router";
 import { mapCredentialFromVmToApi } from "./login.mappers";
 import { validateForm } from "./login.validation";
 import * as api from "./api";
@@ -11,6 +11,7 @@ import classes from "./login.module.css";
 export const Login: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const { setUserProfile } = useProfileContext();
+  
   const [userLogin, setUserLogin] = React.useState<vm.Credential>(
     vm.createEmptyCredential()
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./movements-table.module.css";
 import { isExpense } from "../movements.helpers";
 import { Movement } from "../movements.vm";
+import classes from "./movements-table.module.css";
 
 interface Props {
   movements: Movement[];

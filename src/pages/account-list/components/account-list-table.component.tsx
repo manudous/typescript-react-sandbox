@@ -1,8 +1,8 @@
 import React from "react";
-import { Account } from "../account-list.vm";
 import { Link, generatePath } from "react-router-dom";
-import { appRoutes } from "../../../core/router";
-import { Lookup } from "../../../common/models";
+import { Lookup } from "@/common/models";
+import { appRoutes } from "@/core/router";
+import { Account } from "../account-list.vm";
 import classes from "./account-list-table.module.css";
 
 interface Props {

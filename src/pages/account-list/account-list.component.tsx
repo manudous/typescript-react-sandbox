@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, generatePath, useNavigate } from "react-router-dom";
-import { Lookup, createEmptyLookup } from "../../common/models";
-import { appRoutes } from "../../core/router";
-import { AppLayout } from "../../layouts";
+import { Lookup, createEmptyLookup } from "@/common/models";
+import { appRoutes } from "@/core/router";
+import { AppLayout } from "@/layouts";
 import { mapAccountListApiToVm } from "./account-list.mappers";
+import { AccountListTable } from "./components";
 import * as api from "./api";
 import * as vm from "./account-list.vm";
-import { AccountListTable } from "./components";
 import classes from "./account-list.module.css";
 
 export const AccountList: React.FunctionComponent = () => {

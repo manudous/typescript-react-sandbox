@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { AppLayout } from "../../layouts";
+import { AppLayout } from "@/layouts";
 import { MovementsTable } from "./components";
 import { mapMovementListApiToVm, mapAccountApiToVm } from "./movements.mappers";
 import * as api from "./api";

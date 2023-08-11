@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { appRoutes } from "../../core/router/routes";
-import { AppLayout } from "../../layouts";
+import { Lookup, createEmptyLookup } from "@/common/models";
+import { appRoutes } from "@/core/router/routes";
+import { AppLayout } from "@/layouts";
 import { validateForm } from "./account.validation";
 import {
   mapAccountFromApiToVm,
@@ -10,7 +11,6 @@ import {
 import * as api from "./api";
 import * as vm from "./account.vm";
 import classes from "./account.module.css";
-import { Lookup, createEmptyLookup } from "../../common/models";
 
 export const Account: React.FunctionComponent = () => {
   const navigate = useNavigate();

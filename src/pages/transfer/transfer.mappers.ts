@@ -1,4 +1,4 @@
-import { Lookup } from "../../common/models";
+import { Lookup } from "@/common/models";
 import * as apiModel from "./api";
 import * as vm from "./transfer.vm";
 
