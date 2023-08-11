@@ -10,8 +10,6 @@ import {
 import * as api from "./api";
 import * as vm from "./account.vm";
 import classes from "./account.module.css";
-import { Select } from "../../common-app/components";
-import { selectOptions } from "./account.constants";
 import { Lookup, createEmptyLookup } from "../../common/models";
 
 export const Account: React.FunctionComponent = () => {
@@ -21,7 +19,7 @@ export const Account: React.FunctionComponent = () => {
   const [account, setAccount] = React.useState<vm.Account>(
     vm.createEmptyAccount()
   );
-  
+
   const [selectedOption, setSelectedOption] = React.useState<Lookup>(
     createEmptyLookup()
   );
@@ -68,13 +66,13 @@ export const Account: React.FunctionComponent = () => {
   }, []);
 
   React.useEffect(() => {
-    if (account) {
+    if (selectedOption.id) {
       setSelectedOption({
         id: account.type,
         name: account.name,
       });
     }
-  }, [account]);
+  }, [selectedOption]);
 
   return (
     <AppLayout>
@@ -86,13 +84,18 @@ export const Account: React.FunctionComponent = () => {
           <div className={classes.formContainer}>
             <label>Tipo de cuenta:</label>
             <div>
-              <Select
-                value={selectedOption}
-                onChange={setSelectedOption}
-                optionList={selectOptions}
-                defaultValue="Seleccionar"
+              <select
                 className={classes.select}
-              />
+                onChange={(e) => {
+                  setAccount({ ...account, type: e.target.value });
+                }}
+                value={account.type}
+              >
+                <option value="">Seleccionar</option>
+                <option value="0">Cuenta Corriente</option>
+                <option value="1">Cuenta Ahorro</option>
+                <option value="2">Cuenta Nomina</option>
+              </select>
               {errors.type && <p className={classes.error}>{errors.type}</p>}
             </div>
             <label htmlFor="alias">Alias:</label>

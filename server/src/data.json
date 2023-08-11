@@ -108,17 +108,5 @@
       "accountId": "3"
     }
   ],
-  "transfer": [
-    {
-      "accountId": "1",
-      "ibanId": "2",
-      "name": "Manolo",
-      "amount": 34,
-      "concept": "Compra",
-      "notes": "esta todo ok",
-      "transaction": "1979-05-25T00:00:00.000Z",
-      "realTransaction": "1979-05-25T00:00:00.000Z",
-      "id": 1
-    }
-  ]
+  "transfer": []
 }

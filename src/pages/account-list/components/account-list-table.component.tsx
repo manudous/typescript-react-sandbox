@@ -1,15 +1,14 @@
 import React from "react";
-import { Select } from "../../../common-app/components";
 import { Account } from "../account-list.vm";
 import { Link, generatePath } from "react-router-dom";
 import { appRoutes } from "../../../core/router";
 import { Lookup } from "../../../common/models";
-import { selectOptions } from "../account-list.constants";
 import classes from "./account-list-table.module.css";
 
 interface Props {
   accounts: Account[];
   setSelectedOption: (value: Lookup) => void;
+  selectedOption: Lookup;
 }
 
 export const AccountListTable: React.FunctionComponent<Props> = (props) => {
@@ -44,12 +43,19 @@ export const AccountListTable: React.FunctionComponent<Props> = (props) => {
               {account.lastTransaction}
             </span>
             <span className={`${classes.select} `}>
-              <Select
-                value={account}
-                onChange={setSelectedOption}
-                optionList={selectOptions}
-                defaultValue="Seleccionar"
-              />
+              <select
+                className={classes.select}
+                onChange={(e) =>
+                  setSelectedOption({
+                    id: account.id,
+                    name: e.target.value,
+                  })
+                }
+              >
+                <option value="Seleccionar">Seleccionar</option>
+                <option value="1">Transferir</option>
+                <option value="2">Movimientos</option>
+              </select>
             </span>
           </div>
         ))}

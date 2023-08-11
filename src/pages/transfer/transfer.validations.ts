@@ -7,8 +7,8 @@ export const validateForm = (account: vm.Transfer): vm.Transfer => {
     errors = { ...errors, accountId: "La cuenta es requerida" };
   }
 
-  if (!account.ibanId) {
-    errors = { ...errors, ibanId: "El IBAN es requerido" };
+  if (!account.iban.trim()) {
+    errors = { ...errors, iban: "El IBAN es requerido" };
   }
 
   if (!account.name.trim()) {
@@ -25,18 +25,6 @@ export const validateForm = (account: vm.Transfer): vm.Transfer => {
 
   if (!account.notes.trim()) {
     errors = { ...errors, notes: "Las notas son requeridas" };
-  }
-
-  if (!account.date.trim()) {
-    errors = { ...errors, date: "La fecha es requerida" };
-  }
-
-  if (!account.month.trim()) {
-    errors = { ...errors, month: "El mes es requerido" };
-  }
-
-  if (!account.year.trim()) {
-    errors = { ...errors, year: "El año es requerido" };
   }
 
   if (!account.email.trim()) {

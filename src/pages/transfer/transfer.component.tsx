@@ -1,11 +1,9 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppLayout } from "../../layouts";
-import { Select } from "../../common-app/components";
-import { Lookup, createEmptyLookup } from "../../common/models";
+import { Lookup } from "../../common/models";
 import { appRoutes } from "../../core/router";
 import {
-  mapAccountFromApiToVm,
   mapAccountListFromApiToVm,
   mapTransferFromVmToApi,
 } from "./transfer.mappers";
@@ -24,12 +22,6 @@ export const Transfer: React.FunctionComponent = () => {
 
   const [accounts, setAccounts] = React.useState<Lookup[]>([]);
 
-  const [selectedCurrentAccount, setSelectedCurrentAccount] =
-    React.useState<Lookup>(createEmptyLookup());
-
-  const [selectedDestinationAccount, setSelectDestinationAccount] =
-    React.useState<Lookup>(createEmptyLookup());
-
   const [errors, setErrors] = React.useState<vm.Transfer>(
     vm.createEmptyTransfer()
   );
@@ -46,9 +38,7 @@ export const Transfer: React.FunctionComponent = () => {
 
     if (isValidForm) {
       try {
-        // console.log("es valido el formulario");
         const transferModel = mapTransferFromVmToApi(transfer);
-        console.log(transferModel);
         await api.saveTransfer(transferModel);
         navigate(appRoutes.accountList);
       } catch (error) {
@@ -57,53 +47,25 @@ export const Transfer: React.FunctionComponent = () => {
     }
   };
 
-  const loadAccounts = async () => {
+  const loadInitialData = async () => {
     try {
       const accountList = await api.getAccountList();
       const accountListVm = mapAccountListFromApiToVm(accountList);
       setAccounts(accountListVm);
+      if (id) {
+        setTransfer({
+          ...transfer,
+          accountId: id,
+        });
+      }
     } catch (error) {
-      throw new Error("Error loading accounts");
-    }
-  };
-
-  const loadAccountById = async (id: string) => {
-    try {
-      const account = await api.getAccountById(id);
-      const accountVm = mapAccountFromApiToVm(account);
-      setSelectedCurrentAccount(accountVm);
-    } catch (error) {
-      throw new Error("Error loading account");
+      throw new Error("Error loading initial data");
     }
   };
 
   React.useEffect(() => {
-    loadAccounts();
+    loadInitialData();
   }, []);
-
-  React.useEffect(() => {
-    if (id) {
-      loadAccountById(id);
-    }
-  }, [id]);
-
-  React.useEffect(() => {
-    if (selectedCurrentAccount.id) {
-      setTransfer({
-        ...transfer,
-        accountId: selectedCurrentAccount.id,
-      });
-    }
-  }, [selectedCurrentAccount]);
-
-  React.useEffect(() => {
-    if (selectedDestinationAccount.id) {
-      setTransfer({
-        ...transfer,
-        ibanId: selectedDestinationAccount.id,
-      });
-    }
-  }, [selectedDestinationAccount]);
 
   return (
     <AppLayout>
@@ -114,25 +76,31 @@ export const Transfer: React.FunctionComponent = () => {
             <div className={classes.formContainer}>
               <div>
                 <label>Selecciones cuenta de origen (IBAN):</label>
-                <Select
-                  value={selectedCurrentAccount}
-                  onChange={setSelectedCurrentAccount}
-                  optionList={accounts}
-                  defaultValue="Seleccione una cuenta"
+                <select
                   className={classes.select}
-                />
+                  onChange={(e) => {
+                    setTransfer({ ...transfer, accountId: e.target.value });
+                  }}
+                  value={transfer.accountId}
+                >
+                  <option value="">Seleccione una cuenta</option>
+                  {accounts.map((account) => (
+                    <option key={account.id} value={account.id}>
+                      {account.name}
+                    </option>
+                  ))}
+                </select>
                 <p className={classes.error}>{errors.accountId}</p>
               </div>
               <div>
                 <label>Ingrese el IBAN de destino:</label>
-                <Select
-                  value={selectedDestinationAccount}
-                  onChange={setSelectDestinationAccount}
-                  optionList={accounts}
-                  defaultValue="Seleccione una cuenta"
-                  className={classes.select}
+                <input
+                  className={classes.large}
+                  onChange={(e) =>
+                    setTransfer({ ...transfer, iban: e.target.value })
+                  }
                 />
-                <p className={classes.error}>{errors.accountId}</p>
+                <p className={classes.error}>{errors.iban}</p>
               </div>
               <div>
                 <label>Beneficiario:</label>
@@ -188,34 +156,15 @@ export const Transfer: React.FunctionComponent = () => {
               <div className={classes.date}>
                 <label>Fecha de ejecución:</label>
                 <input
-                  className="fecha-input small"
-                  type="number"
-                  placeholder="dd"
+                  type="date"
                   onChange={(e) =>
-                    setTransfer({ ...transfer, date: e.target.value })
+                    setTransfer({
+                      ...transfer,
+                      realDateTransfer: e.target.value,
+                    })
                   }
                 />
-                <p>/</p>
-                <input
-                  className="fecha-input small"
-                  type="number"
-                  placeholder="mm"
-                  onChange={(e) =>
-                    setTransfer({ ...transfer, month: e.target.value })
-                  }
-                />
-                <p>/</p>
-                <input
-                  className="fecha-input medium"
-                  type="number"
-                  placeholder="yyyy"
-                  onChange={(e) =>
-                    setTransfer({ ...transfer, year: e.target.value })
-                  }
-                />
-                <p className={classes.error}>
-                  {errors.date || errors.month || errors.year}
-                </p>
+                <p className={classes.error}>{errors.realDateTransfer}</p>
               </div>
             </div>
             <div className={classes.formContainer}>

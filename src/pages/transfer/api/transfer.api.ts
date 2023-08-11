@@ -12,4 +12,5 @@ export const getAccountById = (id: string): Promise<Account> =>
 const urlTransfer = `${import.meta.env.VITE_BASE_API_URL}/transfer`;
 
 export const saveTransfer = (transfer: Transfer): Promise<boolean> =>
+
   Axios.post<boolean>(urlTransfer, transfer).then(({ data }) => data);

@@ -9,11 +9,11 @@ export interface Account {
 
 export interface Transfer {
   accountId: string;
-  ibanId: string;
+  iban: string;
   name: string;
   amount: number;
   concept: string;
   notes: string;
-  transaction: string;
-  realTransaction: string;
+  transferDate: string;
+  realTransferDate: string;
 }
