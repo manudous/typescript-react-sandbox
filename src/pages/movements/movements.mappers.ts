@@ -1,14 +1,14 @@
 import * as apiModel from "./api";
-import * as vm from "./movements.vm";
+import * as viewModel from "./movements.vm";
 
 export const mapMovementListApiToVm = (
   movementList: apiModel.Movement[]
-): vm.Movement[] =>
+): viewModel.Movement[] =>
   Array.isArray(movementList)
     ? movementList.map((movement) => mapMovementApiToVm(movement))
     : [];
 
-const mapMovementApiToVm = (movement: apiModel.Movement): vm.Movement => ({
+const mapMovementApiToVm = (movement: apiModel.Movement): viewModel.Movement => ({
   id: movement.id,
   description: movement.description,
   amount: `${movement.amount} €`,
@@ -17,7 +17,7 @@ const mapMovementApiToVm = (movement: apiModel.Movement): vm.Movement => ({
   realTransaction: new Date(movement.realTransaction).toLocaleDateString(),
 });
 
-export const mapAccountApiToVm = (account: apiModel.Account): vm.Account => ({
+export const mapAccountApiToVm = (account: apiModel.Account): viewModel.Account => ({
   id: account.id,
   name: account.name,
   iban: account.iban,

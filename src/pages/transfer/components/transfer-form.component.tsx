@@ -1,13 +1,13 @@
 import React from "react";
 import { Lookup } from "@/common/models";
-import * as vm from "../transfer.vm";
+import * as viewModel from "../transfer.vm";
 import classes from "./transfer-form.module.css";
 
 interface Props {
   accounts: Lookup[];
-  transfer: vm.Transfer;
-  errors: vm.Transfer;
-  setTransfer: (transfer: vm.Transfer) => void;
+  transfer: viewModel.Transfer;
+  errors: viewModel.Transfer;
+  setTransfer: (transfer: viewModel.Transfer) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 

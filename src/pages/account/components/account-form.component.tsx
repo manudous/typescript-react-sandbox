@@ -1,12 +1,12 @@
 import React from "react";
-import * as vm from "../account.vm";
+import * as viewModel from "../account.vm";
 import classes from "./account-form.module.css";
 import { selectOptions } from "../account.constants";
 
 interface Props {
-  account: vm.Account;
-  errors: vm.Account;
-  setAccount: (account: vm.Account) => void;
+  account: viewModel.Account;
+  errors: viewModel.Account;
+  setAccount: (account: viewModel.Account) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 

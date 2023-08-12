@@ -1,10 +1,10 @@
 import React from "react";
 import { TableBody } from "./table-body.component";
-import * as vm from "../account-list.vm";
+import * as viewModel from "../account-list.vm";
 import classes from "./account-list-table.module.css";
 
 interface Props {
-  accounts: vm.Account[];
+  accounts: viewModel.Account[];
 }
 
 export const AccountListTable: React.FunctionComponent<Props> = (props) => {

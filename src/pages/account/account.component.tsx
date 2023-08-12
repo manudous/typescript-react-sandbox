@@ -9,19 +9,19 @@ import {
   mapAccountFromApiToVm,
   mapAccountFromVmToApi,
 } from "./account.mappers";
-import * as vm from "./account.vm";
+import * as viewModel from "./account.vm";
 import classes from "./account.module.css";
 
 export const Account: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [account, setAccount] = React.useState<vm.Account>(
-    vm.createEmptyAccount()
+  const [account, setAccount] = React.useState<viewModel.Account>(
+    viewModel.createEmptyAccount()
   );
 
-  const [errors, setErrors] = React.useState<vm.AccountErrors>(
-    vm.createEmptyErrors()
+  const [errors, setErrors] = React.useState<viewModel.AccountErrors>(
+    viewModel.createEmptyErrors()
   );
 
   const loadAccount = async () => {

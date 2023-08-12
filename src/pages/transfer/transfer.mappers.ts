@@ -1,6 +1,6 @@
 import { Lookup } from "@/common/models";
 import * as apiModel from "./api";
-import * as vm from "./transfer.vm";
+import * as viewModel from "./transfer.vm";
 
 const mapAccountFromApiToVm = (accountList: apiModel.Account): Lookup => ({
   id: accountList.id,
@@ -15,7 +15,7 @@ export const mapAccountListFromApiToVm = (
     : [];
 
 export const mapTransferFromVmToApi = (
-  transfer: vm.Transfer
+  transfer: viewModel.Transfer
 ): apiModel.Transfer => ({
   accountId: transfer.accountId,
   iban: transfer.iban,

@@ -6,26 +6,25 @@ import * as api from "./api";
 import { LoginForm } from "./components";
 import { mapCredentialFromVmToApi } from "./login.mappers";
 import { validateForm } from "./login.validation";
-import * as vm from "./login.vm";
+import * as viewModel from "./login.vm";
 import classes from "./login.module.css";
 
 export const Login: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const { setUserProfile } = useProfileContext();
 
-  const [userCredential, setUserCredential] = React.useState<vm.Credential>(
-    vm.createEmptyCredential()
+  const [userCredential, setUserCredential] = React.useState<viewModel.Credential>(
+    viewModel.createEmptyCredential()
   );
 
-  const [errors, setErrors] = React.useState<vm.Credential>(
-    vm.createEmptyCredential()
+  const [errors, setErrors] = React.useState<viewModel.Credential>(
+    viewModel.createEmptyCredential()
   );
 
-  const handleLogin = async (credential: vm.Credential): Promise<boolean> => {
+  const handleLogin = async (credential: viewModel.Credential): Promise<boolean> => {
     try {
       const userLoginModel = mapCredentialFromVmToApi(credential);
-      const isValidLogin = await api.isValidLogin(userLoginModel);
-      return isValidLogin;
+      return await api.isValidLogin(userLoginModel);
     } catch (error) {
       throw new Error("Error in login");
     }

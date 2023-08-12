@@ -10,21 +10,21 @@ import {
 import { validateForm } from "./transfer.validations";
 import * as api from "./api";
 import { TransferForm } from "./components";
-import * as vm from "./transfer.vm";
+import * as viewModel from "./transfer.vm";
 import classes from "./transfer.module.css";
 
 export const Transfer: React.FunctionComponent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [transfer, setTransfer] = React.useState<vm.Transfer>(
-    vm.createEmptyTransfer()
+  const [transfer, setTransfer] = React.useState<viewModel.Transfer>(
+    viewModel.createEmptyTransfer()
   );
 
   const [accounts, setAccounts] = React.useState<Lookup[]>([]);
 
-  const [errors, setErrors] = React.useState<vm.Transfer>(
-    vm.createEmptyTransfer()
+  const [errors, setErrors] = React.useState<viewModel.Transfer>(
+    viewModel.createEmptyTransfer()
   );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

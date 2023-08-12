@@ -1,8 +1,8 @@
 import * as apiModel from "./api";
-import * as vm from "./account.vm";
+import * as viewModel from "./account.vm";
 
 export const mapAccountFromVmToApi = (
-  account: vm.Account
+  account: viewModel.Account
 ): apiModel.Account => ({
   id: account.id,
   type: account.type,
@@ -11,7 +11,7 @@ export const mapAccountFromVmToApi = (
 
 export const mapAccountFromApiToVm = (
   account: apiModel.Account
-): vm.Account => ({
+): viewModel.Account => ({
   id: account.id,
   type: account.type,
   name: account.name,

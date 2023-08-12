@@ -1,10 +1,10 @@
 import React from "react";
 import { isExpense } from "../movements.helpers";
-import * as vm from "../movements.vm";
+import * as viewModel from "../movements.vm";
 import classes from "./table-body.module.css";
 
 interface Props {
-  movement: vm.Movement;
+  movement: viewModel.Movement;
 }
 
 export const TableBody: React.FunctionComponent<Props> = (props) => {

@@ -4,15 +4,15 @@ import { AppLayout } from "@/layouts";
 import { MovementsTable } from "./components";
 import { mapMovementListApiToVm, mapAccountApiToVm } from "./movements.mappers";
 import * as api from "./api";
-import * as vm from "./movements.vm";
+import * as viewModel from "./movements.vm";
 import classes from "./movements.module.css";
 
 export const Movements: React.FunctionComponent = () => {
   const { id } = useParams();
 
-  const [movements, setMovements] = React.useState<vm.Movement[]>([]);
-  const [account, setAccount] = React.useState<vm.Account>(
-    vm.createEmptyAccount()
+  const [movements, setMovements] = React.useState<viewModel.Movement[]>([]);
+  const [account, setAccount] = React.useState<viewModel.Account>(
+    viewModel.createEmptyAccount()
   );
 
   const loadInitialData = async () => {

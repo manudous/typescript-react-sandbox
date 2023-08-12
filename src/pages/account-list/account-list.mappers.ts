@@ -1,14 +1,14 @@
-import * as api from "./api";
-import * as vm from "./account-list.vm";
+import * as apiModel from "./api";
+import * as viewModel from "./account-list.vm";
 
 export const mapAccountListApiToVm = (
-  accountList: api.Account[]
-): vm.Account[] =>
+  accountList: apiModel.Account[]
+): viewModel.Account[] =>
   Array.isArray(accountList)
     ? accountList.map((account) => mapAccountApiToVm(account))
     : [];
 
-const mapAccountApiToVm = (account: api.Account): vm.Account => ({
+const mapAccountApiToVm = (account: apiModel.Account): viewModel.Account => ({
   id: account.id,
   iban: account.iban,
   name: account.name,

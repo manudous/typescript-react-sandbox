@@ -5,11 +5,11 @@ import { AppLayout } from "@/layouts";
 import { mapAccountListApiToVm } from "./account-list.mappers";
 import { AccountListTable } from "./components";
 import * as api from "./api";
-import * as vm from "./account-list.vm";
+import * as viewModel from "./account-list.vm";
 import classes from "./account-list.module.css";
 
 export const AccountList: React.FunctionComponent = () => {
-  const [accounts, setAccounts] = React.useState<vm.Account[]>([]);
+  const [accounts, setAccounts] = React.useState<viewModel.Account[]>([]);
 
   const loadAccounts = async () => {
     try {

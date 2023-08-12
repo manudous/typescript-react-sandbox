@@ -2,12 +2,12 @@ import React from "react";
 import { Link, generatePath, useNavigate } from "react-router-dom";
 import { Lookup, createEmptyLookup } from "@/common/models";
 import { appRoutes } from "@/core/router";
-import * as vm from "../account-list.vm";
+import * as viewModel from "../account-list.vm";
 import classes from "./table-body.module.css";
 import { selectOptions, labels } from "../account-list.constants";
 
 interface Props {
-  account: vm.Account;
+  account: viewModel.Account;
 }
 
 export const TableBody: React.FunctionComponent<Props> = (props) => {

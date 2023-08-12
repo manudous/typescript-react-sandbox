@@ -1,11 +1,11 @@
 import React from "react";
-import * as vm from "../login.vm";
+import * as viewModel from "../login.vm";
 import classes from "./login-form.module.css";
 
 interface Props {
-  userCredential: vm.Credential;
-  errors: vm.Credential;
-  setUserCredential: (credential: vm.Credential) => void;
+  userCredential: viewModel.Credential;
+  errors: viewModel.Credential;
+  setUserCredential: (credential: viewModel.Credential) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 

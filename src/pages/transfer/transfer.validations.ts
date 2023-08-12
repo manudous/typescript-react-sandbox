@@ -1,7 +1,7 @@
-import * as vm from "./transfer.vm";
+import * as viewModel from "./transfer.vm";
 
-export const validateForm = (account: vm.Transfer): vm.Transfer => {
-  let errors: vm.Transfer = vm.createEmptyTransfer();
+export const validateForm = (account: viewModel.Transfer): viewModel.Transfer => {
+  let errors: viewModel.Transfer = viewModel.createEmptyTransfer();
 
   if (!account.accountId) {
     errors = { ...errors, accountId: "La cuenta es requerida" };
