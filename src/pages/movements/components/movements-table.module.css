@@ -8,14 +8,10 @@
   min-width: 800px;
 }
 
-.grid-table__row {
+.header-table {
   display: grid;
   grid-template-columns: 1fr 20% 25% 1fr 25%;
   gap: 1px;
-}
-
-.grid-table__row:nth-child(odd) {
-  background-color: #eeeeee;
 }
 
 .header-cell {
@@ -24,25 +20,4 @@
   font-size: 0.8em;
   font-weight: 900;
   padding: 10px;
-}
-
-.data-cell {
-  font-size: 13px;
-  padding: 10px;
-  font-size: 0.8em;
-  color: #232c3b;
-  align-self: center;
-}
-
-.data-cell a {
-  text-decoration: underline;
-  color: #232c3b;
-}
-
-.align-right {
-  text-align: right;
-}
-
-.expense {
-  color: #c70202;
 }
