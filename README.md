@@ -22,6 +22,24 @@ Para ejecutar el proyecto, ejecutar el siguiente comando:
 npm run dev
 ```
 
+También se puede hacer desde la raíz de la aplicación, arrancar la aplicación por separado:
+
+```bash
+npm run dev
+```
+
+Y el servidor, vamos a la carpeta server:
+
+```bash
+cd server
+```
+
+Y ejecutamos el siguiente comando:
+
+```bash
+npm start
+```
+
 ## Acceso
 
 Para poder logarse en la aplicación, se debe utilizar el siguiente usuario y contraseña:
@@ -33,9 +51,9 @@ Contraseña: test
 
 ## Descripción
 
-La aplicación consiste en una banca online, donde el usuario puede ver sus cuentas, realizar transferencias y ver el historial de las mismas.
+La aplicación consiste en una banca online, donde el usuario puede ver sus cuentas, ver los movimientos de una cuenta y hacer transferencias.
 
-Vamos a tener las seguientes pantallas:
+Vamos a tener las siguientes pantallas:
 
 - Login
 - Mis cuentas
