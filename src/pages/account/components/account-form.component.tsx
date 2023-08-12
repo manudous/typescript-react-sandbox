@@ -24,8 +24,8 @@ export const AccountForm: React.FunctionComponent<Props> = (props) => {
   return (
     <form onSubmit={onSubmit}>
       <div className={classes.formContainer}>
-        <label htmlFor="type">Tipo de cuenta:</label>
         <div>
+          <label htmlFor="type">Tipo de cuenta:</label>
           <select
             id="type"
             name="type"
@@ -41,8 +41,8 @@ export const AccountForm: React.FunctionComponent<Props> = (props) => {
           </select>
           {errors.type && <p className={classes.error}>{errors.type}</p>}
         </div>
-        <label htmlFor="name">Alias:</label>
         <div>
+          <label htmlFor="name">Alias:</label>
           <input
             id="name"
             name="name"
@@ -53,10 +53,10 @@ export const AccountForm: React.FunctionComponent<Props> = (props) => {
           />
           {errors.name && <p className={classes.error}>{errors.name}</p>}
         </div>
-        <button type="submit" className={classes.button}>
-          GUARDAR
-        </button>
       </div>
+      <button type="submit" className={classes.button}>
+        GUARDAR
+      </button>
     </form>
   );
 };

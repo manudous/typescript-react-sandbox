@@ -119,11 +119,9 @@ export const TransferForm: React.FunctionComponent<Props> = (props) => {
           <p className={classes.error}>{errors.email}</p>
         </div>
       </div>
-      {/* <div className={classes.formContainer}> */}
-        <button type="submit" className={classes.button}>
-          REALIZAR LA TRANSFERENCIA
-        </button>
-      {/* </div> */}
+      <button type="submit" className={classes.button}>
+        REALIZAR LA TRANSFERENCIA
+      </button>
     </form>
   );
 };
