@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useProfileContext } from "@/core/profile";
 import { appRoutes } from "@/core/router";
-import logoHeader from "../../../../public/assets/logo_header_white.svg";
+import logoHeader from "/assets/logo_header_white.svg";
 import classes from "./header.module.css";
 
 export const Header: React.FunctionComponent = () => {

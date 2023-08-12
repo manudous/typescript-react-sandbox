@@ -1,5 +1,5 @@
 import React from "react";
-import logoFooter from "../../../../public/assets/logo_footer.svg";
+import logoFooter from "/assets/logo_footer.svg";
 import classes from "./footer.module.css";
 
 export const Footer: React.FunctionComponent = () => {
